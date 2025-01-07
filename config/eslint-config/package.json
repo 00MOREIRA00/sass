@@ -1,0 +1,30 @@
+{
+  "name": "@saas/eslint-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./base": "./base.cjs",
+    "./next-js": "./next.cjs",
+    "./node": "./node.js"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
+    "@saas/prettier": "workspace:*",
+    "prettier": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.1.5",
+    "eslint-plugin-prettier": "^3.4.0"
+  },
+  "dependencies": {
+    "eslint-plugin-simple-import-sort": "^12.1.1"
+  },
+  "prettier": "@saas/prettier",
+  "eslintConfig": {
+    "extends": [
+      "./base"
+    ]
+  },
+  "scripts": {
+    "lint": "eslint . --fix"
+  }
+}
