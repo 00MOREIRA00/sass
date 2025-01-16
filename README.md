@@ -11,3 +11,5 @@ Executando o Prettier
 ```bash
 pnpm run format
 ```
+
+Instalando no packge.son correto
