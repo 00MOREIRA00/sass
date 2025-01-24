@@ -4,12 +4,33 @@ import {
   createMongoAbility,
   MongoAbility,
 } from '@casl/ability'
+import { z } from 'zod'
 import { User } from './models/user'
 import { permissions } from './permissions'
-import { UserSubject } from './subjects/user'
-import { ProjectSubject } from './subjects/project'
+import { userSubject } from './subjects/user'
+import { projectSubject } from './subjects/project'
+import { organizationSubject } from './subjects/organization'
+import { inviteSubject } from './subjects/invite'
+import { billingSubject } from './subjects/billing'
 
-type AppAbilities = UserSubject | ProjectSubject | ['manage', 'all']
+
+
+// Criando um schema para definir as habilidades do usuário
+const AppAbilitiesSchema = z.union([
+  projectSubject,
+  userSubject,
+  organizationSubject,
+  inviteSubject,
+  billingSubject,
+
+  z.tuple([
+    z.literal('manage'),
+    z.literal('all')
+])
+])
+type AppAbilities = z.infer<typeof AppAbilitiesSchema>
+
+
 
 export type AppAbility = MongoAbility<AppAbilities>
 export const createAppAbility = createMongoAbility as CreateAbility<AppAbility>
