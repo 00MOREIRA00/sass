@@ -9,11 +9,7 @@ import { permissions } from './permissions'
 import { UserSubject } from './subjects/user'
 import { ProjectSubject } from './subjects/project'
 
-
-
-
 type AppAbilities = UserSubject | ProjectSubject | ['manage', 'all']
-
 
 export type AppAbility = MongoAbility<AppAbilities>
 export const createAppAbility = createMongoAbility as CreateAbility<AppAbility>
@@ -31,10 +27,3 @@ export function defineAbilityFor(user: User) {
 
   return ability
 }
-
-// const { build, can, cannot } = new AbilityBuilder(createAppAbility)
-
-// can('invite', 'User')
-// cannot('delete', 'User')
-
-// export const ability = build()

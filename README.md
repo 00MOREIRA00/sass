@@ -13,5 +13,3 @@ pnpm run format
 ```
 
 Instalando no packge.son correto
-
-
