@@ -6,7 +6,6 @@ export const inviteSubject = z.tuple([
     z.literal('get'),
     z.literal('delete'),
     z.literal('manage'),
-
   ]),
   z.literal('Invite'),
 ])

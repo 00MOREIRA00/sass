@@ -11,51 +11,47 @@ O que foi feito ?
 Dentro do meu `./packages/auth/src/subjects` eu modifiquei as tipagens das regras para utilizar o zod, de forma que anteriormente está utilizando typascript puro.
 
 ```typescript
-import { z } from 'zod'
+import { z } from "zod";
 
 export const userSubject = z.tuple([
   z.union([
-    z.literal('delete'),
-    z.literal('update'),
-    z.literal('get'),
-    z.literal('invite'),
-    z.literal('manage'),
+    z.literal("delete"),
+    z.literal("update"),
+    z.literal("get"),
+    z.literal("invite"),
+    z.literal("manage"),
   ]),
-  z.literal('User'),
-])
+  z.literal("User"),
+]);
 
-export type ProjectUser = z.infer<typeof userSubject>
-
+export type ProjectUser = z.infer<typeof userSubject>;
 ```
-
 
 Foi criado um arquivo chamado roles, que irá fazer a importação dessas regras:
 
 ```typescript
-import { z } from 'zod';
+import { z } from "zod";
 
-export const roleSchema = z.union([ 
-    z.literal('ADMIN'),
-    z.literal('MEMBER'),
-    z.literal('BILLING')
-])
+export const roleSchema = z.union([
+  z.literal("ADMIN"),
+  z.literal("MEMBER"),
+  z.literal("BILLING"),
+]);
 
-
-export type Role = z.infer<typeof roleSchema>
+export type Role = z.infer<typeof roleSchema>;
 ```
 
-Dentro do Models agora as regras serão pegas desse arquivo Roles 
+Dentro do Models agora as regras serão pegas desse arquivo Roles
 
 ```typescript
-import { Role } from '../roles'
+import { Role } from "../roles";
 
 export type User = {
-  role: Role
-}
+  role: Role;
+};
 ```
 
 Dentro do arquivo de permissions eu importo esse arquivo roles.
-
 
 Refatorando arquivo de models, para utilizar o zod também:
 
