@@ -9,18 +9,27 @@ type PermissionsByRole = (
 ) => void
 
 export const permissions: Record<Role, PermissionsByRole> = {
-  ADMIN: (_, { can }) => {
-    can('manage', 'all')
+  ADMIN: (user, { can, cannot }) => {
+    can('manage', 'all'),
+    
+    cannot('transfer_ownership', 'Organization')
+    can('transfer_ownership', 'Organization', { ownerId: { $eq: user.id } })
   },
 
   MEMBER: (user, { can }) => {
-    can(['get', 'create'], 'Project'),
+    can('get', 'User')
+    can(['create', 'get'], 'Project')
     can(['update', 'delete'], 'Project', { ownerId: { $eq: user.id } })
   },
 
   BILLING: (_, { can }) => {
-    can('get', 'Billing')
+    can('manage', 'Billing')
   },
 }
 
-//Casl utiliza Mongo, dessa forma podemos fazer query de condição
+
+
+
+
+// Casl utiliza Mongo, dessa forma podemos fazer query de condição
+// A gente tira a autorização e vai dando autorização aos poucos
