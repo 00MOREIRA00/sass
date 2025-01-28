@@ -12,4 +12,13 @@ Executando o Prettier
 pnpm run format
 ```
 
-Instalando no packge.son correto
+Instalando no packge.json correto
+
+
+Rodando a api
+
+```bash
+pnpm dev
+```
+
+
