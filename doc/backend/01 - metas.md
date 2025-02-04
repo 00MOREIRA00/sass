@@ -46,3 +46,31 @@
 - Billing 
 - Membro 
 - Admin
+
+
+### Tabela de Permissões
+|                          | Administrador | Membro | Financeiro | Anonimo |
+| ------------------------ | ------------- | ------ | ------- | --------- |
+| Atualziar Organização    | ✅            | ❌     | ❌      | ❌        |
+| Deletar Organização      | ✅            | ❌     | ❌      | ❌        |
+| Convidar um Membro       | ✅            | ❌     | ❌      | ❌        |
+| Revogar Convite          | ✅            | ❌     | ❌      | ❌        |
+| Listar Membros           | ✅            | ✅     | ✅      | ❌        |
+| Tranferir Dono Projeto   | ⚠️            | ❌     | ❌      | ❌        |
+| Atualizar regras membro  | ✅            | ❌     | ❌      | ❌        |
+| Deletar Membro           | ✅            | ⚠️     | ❌      | ❌        |
+| Listar Projetos          | ✅            | ✅     | ✅      | ❌        |
+| Criar novo Projeto       | ✅            | ✅     | ❌      | ❌        |
+| Atualizar projeto        | ✅            | ⚠️     | ❌      | ❌        |
+| Deletar projeto          | ✅            | ⚠️     | ❌      | ❌        |
+| Obter info Financeiro    | ✅            | ❌     | ✅      | ❌        |
+| Exportar info Financeiro | ✅            | ❌     | ✅      | ❌        |
+
+> ✅ = Permitido 
+> ❌ = Não Permitido 
+> ⚠️ = Permitido c/ condição
+
+#### Condições 
+- Somente os proprietários podem transferir a propriedade da organização; 
+- Somente administradores e autores de projetos podem atualizar/excluir o projeto;
+- Membros podem deixar sua própria organização;
