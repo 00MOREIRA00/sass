@@ -14,11 +14,8 @@ pnpm run format
 
 Instalando no packge.json correto
 
-
 Rodando a api
 
 ```bash
 pnpm dev
 ```
-
-
