@@ -59,3 +59,13 @@ pnpm prisma studio
 ```
 pnpm install --save-dev @faker-js/faker -D
 ```
+
+
+
+## Criando Script
+
+```
+"prisma": {
+        "seed": "tsx prisma/seed.ts"
+    },
+```
