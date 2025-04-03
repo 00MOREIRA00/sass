@@ -5,7 +5,7 @@
 - [] Devera ser capaz de autenticar usando email e senha
 - [] Devera ser capaz de autenticar usando o Github
 - [] Devera ser capaz de recuperar senha usando o email
-- [] Devera ser capaz de criar uma conta (usando email e senha)
+- [x] Devera ser capaz de criar uma conta (usando email e senha)
 
 ### Organizations
 
