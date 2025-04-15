@@ -11,6 +11,7 @@ import fastifySwaggerUi from "@fastify/swagger-ui";
 import { createAccount } from "./routes/auth/create-acount";
 import { authenticateWithProviderPassword } from "./routes/auth/authenticate-with-password";
 import fastifyJwt from "@fastify/jwt";
+import { getProfile } from "./routes/auth/get-profile";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -42,6 +43,7 @@ app.register(fastifyJwt, {
 app.register(fastifyCors);
 
 app.register(createAccount);
+app.register(getProfile)
 app.register(authenticateWithProviderPassword);
 
 app.listen({ port: 9999 }).then(() => {

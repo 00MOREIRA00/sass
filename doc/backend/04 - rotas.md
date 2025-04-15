@@ -48,6 +48,8 @@ await prisma.user.create({
 
 ## Rota de autenticação com Senha
 
+Objetivo dessa rota é receber usuário e senha cadastrado pelo usuário e em caso de sucesso retornar um token JWT
+
 ### Dependências
 
 ```
@@ -73,3 +75,14 @@ pnpm install @fastify jwt
 * Estando tudo ok com as credênciais passadas, nós retornamos um token jwt com a informação de id do usuário ccontida nele.
 
 
+## Rota de aperfil do usuário logado
+
+Objetivo dessa rota é obter o perfil do usuário quando ocorrer login do mesmo.
+
+### Dependências
+
+```
+
+```
+
+### Fluxo 

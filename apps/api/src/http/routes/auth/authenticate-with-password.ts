@@ -10,6 +10,7 @@ export async function authenticateWithProviderPassword(app: FastifyInstance) {
         schema: {
             tags: ['Auth'],
             summary: 'Authenticate with password',
+            description: 'Authenticate user with email and password to utilize the system',
             body: z.object({
                 email: z.string().email(),
                 password: z.string().min(6),
