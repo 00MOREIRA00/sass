@@ -45,3 +45,31 @@ await prisma.user.create({
 ```
 
 > Caso ele esteja dentro das condições do `autoJoinOrganization` será inserido passando o parametro que a tabela espera receber, caso conteria fica como undefined.
+
+## Rota de autenticação com Senha
+
+### Dependências
+
+```
+pnpm install @fastify jwt
+```
+
+### Fluxo 
+
+1. Valida campos passados pelo usuário
+2. Recupera campos passados pelo usuário
+3. Pesquisa usuário no banco de dados através do email
+4. Verifica se encontra email no banco 
+5. Verifica se existe senha cadastrada no campo de senha (Se não existir, é porque ele se loga pelo github)
+6. Caso encontre o email, verifica a senha se está igual no banco
+7. Gera token e retorna
+
+### Desenvolvimento
+
+* Registramos ele no arquivo de server.
+* Cadastra rota, dentre outras coisas como o provider Zod
+* Recuperamos os dados passados na chamada da api
+* Com os dados passados em mão, nós criamos uma validação do email e senha passado
+* Estando tudo ok com as credênciais passadas, nós retornamos um token jwt com a informação de id do usuário ccontida nele.
+
+

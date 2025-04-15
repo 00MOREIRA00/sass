@@ -7,8 +7,10 @@ import {
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import fastifySwagger from "@fastify/swagger";
-import { createAccount } from "./routes/auth/create-acount";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+import { createAccount } from "./routes/auth/create-acount";
+import { authenticateWithProviderPassword } from "./routes/auth/authenticate-with-password";
+import fastifyJwt from "@fastify/jwt";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -33,9 +35,14 @@ app.register(fastifySwaggerUi, {
   routePrefix: "/docs",
 })
 
+app.register(fastifyJwt, {
+    secret: 'my-jwt-secret',
+})
+
 app.register(fastifyCors);
 
 app.register(createAccount);
+app.register(authenticateWithProviderPassword);
 
 app.listen({ port: 9999 }).then(() => {
   console.log("Server is running on port 9999");
