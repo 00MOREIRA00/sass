@@ -19,3 +19,21 @@ Rodando a api
 ```bash
 pnpm dev
 ```
+
+Migrando banco de dados 
+
+```bash
+pnpm prisma migrate dev
+```
+
+Instalando seed banco de dados
+
+```bash
+pnpm prisma db seed
+```
+
+Abrindo prisma studio
+
+```
+pnpm prisma studio
+```
