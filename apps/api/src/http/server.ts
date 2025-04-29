@@ -13,6 +13,8 @@ import { authenticateWithProviderPassword } from "./routes/auth/authenticate-wit
 import fastifyJwt from "@fastify/jwt";
 import { getProfile } from "./routes/auth/get-profile";
 import { errorHandler } from "./error-handler";
+import { requestPasswordRecover } from "./routes/auth/request-password-recover";
+import { resetPassword } from "./routes/auth/reset-password";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -48,6 +50,8 @@ app.register(fastifyCors);
 app.register(createAccount);
 app.register(getProfile)
 app.register(authenticateWithProviderPassword);
+app.register(requestPasswordRecover);
+app.register(resetPassword);
 
 app.listen({ port: 9999 }).then(() => {
   console.log("Server is running on port 9999");
