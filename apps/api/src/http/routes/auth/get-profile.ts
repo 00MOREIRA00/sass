@@ -12,6 +12,9 @@ export async function getProfile(app: FastifyInstance) {
                 tags: ['Auth'],
                 description: 'Verification if user is authenticated in the system',
                 summary: 'Get authenticated user profile',
+                security: [
+                    { beareAuth: [] }
+                ],
                 response: {
                     200: z.object({
                         user: z.object({

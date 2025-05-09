@@ -16,6 +16,7 @@ import { errorHandler } from "./error-handler";
 import { requestPasswordRecover } from "./routes/auth/request-password-recover";
 import { resetPassword } from "./routes/auth/reset-password";
 import { authenticateWithGithub } from "./routes/auth/authenticate-with-github";
+import { env } from "../../../../packages/env";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -32,7 +33,15 @@ app.register(fastifySwagger, {
       description: 'Fullstack Saas app with Mult-tenant & RBAC',
       version: '1.0.0',
     },
-    servers: [],
+    components: {
+      securitySchemes: {
+        beareAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        }
+      }
+    }
   },
   transform: jsonSchemaTransform,
 
@@ -43,7 +52,7 @@ app.register(fastifySwaggerUi, {
 })
 
 app.register(fastifyJwt, {
-    secret: 'my-jwt-secret',
+    secret: env.JWT_SECRET,
 })
 
 app.register(fastifyCors);
@@ -55,6 +64,6 @@ app.register(requestPasswordRecover);
 app.register(resetPassword);
 app.register(authenticateWithGithub);
 
-app.listen({ port: 9999 }).then(() => {
+app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log("Server is running on port 9999");
 });
