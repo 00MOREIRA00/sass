@@ -13,6 +13,8 @@ import { organizationSubject } from "./subjects/organization";
 import { inviteSubject } from "./subjects/invite";
 import { billingSubject } from "./subjects/billing";
 
+export * from './roles'
+
 // Criando um schema para definir as habilidades do usuário
 const AppAbilitiesSchema = z.union([
   projectSubject,
